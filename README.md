@@ -3,7 +3,7 @@
 # 🥷 Universal Stealth AI Harness
 ### Graphify Knowledge Graph + Everything Claude Code (ECC)
 
-**Supercharge ANY IDE with 120+ AI Skills, Code Graphs & Autonomous Workflows — with ZERO Git trace.**
+**Supercharge ANY IDE with 120+ AI Skills, Code Graphs & Workflows — with ZERO Git footprint.**
 
 ---
 
@@ -14,7 +14,7 @@
 
 <br>
 
-[⚡ Quickstart](#-quickstart-choose-your-method) • [🖥️ Interactive CLI](#%EF%B8%8F-interactive-setup-preview) • [💻 Supported IDEs](#-supported-ides--features) • [🧹 Cleanup](#-cleanup--self-destruct) • [🔒 Why Stealth?](#-why-stealth-mode)
+[⚡ Quickstart 1-Click](#-quickstart-1-click-copy) • [💻 Local Offline Setup](#-option-2-local-offline-setup-clone--run) • [🖥️ CLI Preview](#%EF%B8%8F-interactive-cli-prompt) • [💻 Supported IDEs](#-supported-ides--features) • [🧹 1-Click Cleanup](#-1-click-cleanup--self-destruct) • [🔒 Why Stealth?](#-why-stealth-mode)
 
 </div>
 
@@ -22,35 +22,39 @@
 
 ## 📌 What is This?
 
-When working on company, client, or personal repositories, you want **top-tier AI tools** (Knowledge Graphs, TDD workflows, autonomous planning, automated code reviews) **without polluting Git history**.
+When working on client projects, company codebases, or open-source repositories:
+1. You want **AI superpowers** (AST Knowledge Graphs, TDD workflows, automated code reviews, refactoring skills).
+2. You **CANNOT commit AI config files** (.agents/, graphify-out/, .cursor/, .ecc/) to GitHub or GitLab.
 
 > **The Solution:** This harness configures the full AI suite locally in your workspace and injects private .git/info/exclude rules so **NOTHING is ever committed or pushed to GitHub / GitLab**.
 
 ---
 
-## ⚡ Quickstart (Choose Your Method)
+## ⚡ Quickstart (1-Click Copy)
 
-### 🔹 Method 1: Instant Online 1-Liner (No Cloning Required)
+### 🔹 Option 1: Instant Online 1-Liner (No Clone Required)
 
-Just open your project terminal and run:
+Hover over any command block and click the **Copy** button:
 
 #### 🪟 Windows (PowerShell):
 `powershell
 irm https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-stealth.ps1 | iex
 `
+🔗 *Raw Link:* [ai-stealth.ps1](https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-stealth.ps1)
 
 #### 🍎 macOS / 🐧 Linux / Git Bash:
 `ash
 curl -fsSL https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-stealth.sh | bash
 `
+🔗 *Raw Link:* [ai-stealth.sh](https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-stealth.sh)
 
 ---
 
-### 🔹 Method 2: Local Setup (Clone & Run Offline)
+### 🔹 Option 2: Local Offline Setup (Clone & Run)
 
-If you prefer to keep the scripts on your machine and run them locally:
+If you want to keep the scripts on your machine and run them offline:
 
-#### Step 1: Clone the Repository
+#### Step 1: Clone Repository
 `ash
 git clone https://github.com/devSubhamRoy/graphify-ecc.git
 `
@@ -59,38 +63,42 @@ git clone https://github.com/devSubhamRoy/graphify-ecc.git
 
 **On Windows (PowerShell):**
 `powershell
-# Run from your project directory (point to cloned scripts folder)
 powershell -ExecutionPolicy Bypass -File C:\path\to\graphify-ecc\scripts\ai-stealth.ps1
 `
 
 **On macOS / Linux (Bash):**
 `ash
-# Run from your project directory
 bash /path/to/graphify-ecc/scripts/ai-stealth.sh
 `
 
 ---
 
-### 🔹 Method 3: Direct Project Copy
+### 🔹 Option 3: Copy scripts/ Folder Directly Into Your Project
 
-You can also copy the scripts/ folder directly into your project root:
+Place the scripts/ directory inside your project root:
 `	ext
 your-project/
-├── scripts/
-│   ├── ai-stealth.ps1
-│   ├── ai-clean.ps1
-│   ├── ai-stealth.sh
-│   └── ai-clean.sh
+└── scripts/
+    ├── ai-stealth.ps1
+    ├── ai-clean.ps1
+    ├── ai-stealth.sh
+    └── ai-clean.sh
 `
-Then run locally:
-* **Windows:** .\scripts\ai-stealth.ps1
-* **Linux/Mac:** ./scripts/ai-stealth.sh
+Run directly from terminal:
+* **Windows:**
+  `powershell
+  .\scripts\ai-stealth.ps1
+  `
+* **macOS / Linux:**
+  `ash
+  ./scripts/ai-stealth.sh
+  `
 
 ---
 
-## 🖥️ Interactive Setup Preview
+## 🖥️ Interactive CLI Prompt
 
-When the script runs, it interactively asks you to select your IDE and profile:
+When the script runs, it interactively prompts you to choose your environment:
 
 `	ext
 ==========================================================
@@ -137,23 +145,31 @@ Select ECC Profile to install:
 
 ---
 
-## 🧹 Cleanup / Self-Destruct
+## 🧹 1-Click Cleanup / Self-Destruct
 
 Wipe all generated AI files, graphs, and skill folders before Git commits or project handover:
 
-### 🌐 Online 1-Liner Cleanup:
-* **Windows (PowerShell):**
-  `powershell
-  irm https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-clean.ps1 | iex
-  `
-* **macOS / Linux / Git Bash:**
-  `ash
-  curl -fsSL https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-clean.sh | bash
-  `
+#### 🪟 Windows Online 1-Liner:
+`powershell
+irm https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-clean.ps1 | iex
+`
+🔗 *Raw Link:* [ai-clean.ps1](https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-clean.ps1)
 
-### 💻 Local Cleanup:
-* **Windows:** .\scripts\ai-clean.ps1
-* **Linux / macOS:** ./scripts/ai-clean.sh
+#### 🍎 macOS / Linux Online 1-Liner:
+`ash
+curl -fsSL https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-clean.sh | bash
+`
+🔗 *Raw Link:* [ai-clean.sh](https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-clean.sh)
+
+#### 💻 Local Cleanup Command:
+* **Windows:**
+  `powershell
+  .\scripts\ai-clean.ps1
+  `
+* **macOS / Linux:**
+  `ash
+  ./scripts/ai-clean.sh
+  `
 
 ---
 
