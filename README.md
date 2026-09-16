@@ -1,62 +1,96 @@
 ﻿<div align=center>
 
 # 🥷 Universal Stealth AI Harness
-### (Graphify Knowledge Graph + Everything Claude Code)
+### Graphify Knowledge Graph + Everything Claude Code (ECC)
 
-**Supercharge ANY IDE with 120+ AI Skills & Code Graphs — with ZERO trace in your Git repo.**
+**Supercharge ANY IDE with 120+ AI Skills, Code Graphs & Autonomous Workflows — with ZERO Git trace.**
 
-<br>
+---
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)](https://github.com/devSubhamRoy/graphify-ecc)
-[![IDEs Supported](https://img.shields.io/badge/IDEs-Antigravity%20%7C%20Cursor%20%7C%20Claude%20Code%20%7C%20Codex-success)](https://github.com/devSubhamRoy/graphify-ecc)
-[![Git Footprint](https://img.shields.io/badge/Git%20Footprint-0%25%20(Pure%20Stealth)-brightgreen)](https://github.com/devSubhamRoy/graphify-ecc)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-9cf)](https://github.com/devSubhamRoy/graphify-ecc)
+[![IDEs](https://img.shields.io/badge/IDEs-Antigravity%20%7C%20Cursor%20%7C%20Claude%20Code%20%7C%20Codex-success)](https://github.com/devSubhamRoy/graphify-ecc)
+[![Git Trace](https://img.shields.io/badge/Git%20Trace-0%25%20(Pure%20Stealth)-brightgreen)](https://github.com/devSubhamRoy/graphify-ecc)
 
 <br>
 
-<p align=center>
-  <a href=#-what-is-this><strong>What is this?</strong></a> •
-  <a href=#-1-minute-quickstart><strong>Quickstart</strong></a> •
-  <a href=#-what-happens-when-you-run-it-interactive-cli><strong>Interactive Setup</strong></a> •
-  <a href=#-supported-ides--skill-modules><strong>Supported IDEs</strong></a> •
-  <a href=#-1-click-clean--self-destruct><strong>Cleanup</strong></a> •
-  <a href=#-why-stealth-mode-gitinfoexclude-vs-gitignore><strong>Why Stealth?</strong></a>
-</p>
+[⚡ Quickstart](#-quickstart-choose-your-method) • [🖥️ Interactive CLI](#%EF%B8%8F-interactive-setup-preview) • [💻 Supported IDEs](#-supported-ides--features) • [🧹 Cleanup](#-cleanup--self-destruct) • [🔒 Why Stealth?](#-why-stealth-mode)
 
 </div>
 
 ---
 
-## 💡 What is this?
+## 📌 What is This?
 
-When you work on client projects, company codebases, or personal repositories:
-1. You want **AI superpowers** (AST Knowledge Graphs, TDD workflows, automatic code reviews, refactoring skills).
-2. You **CANNOT commit AI config files** (.agents/, graphify-out/, .cursor/, .ecc/) to GitHub or GitLab.
+When working on company, client, or personal repositories, you want **top-tier AI tools** (Knowledge Graphs, TDD workflows, autonomous planning, automated code reviews) **without polluting Git history**.
 
-**This harness solves that problem completely.**  
-It installs the entire AI engine locally in your project, while automatically hiding all traces from Git using private stealth ignores (.git/info/exclude).
+> **The Solution:** This harness configures the full AI suite locally in your workspace and injects private .git/info/exclude rules so **NOTHING is ever committed or pushed to GitHub / GitLab**.
 
 ---
 
-## ⚡ 1-Minute Quickstart
+## ⚡ Quickstart (Choose Your Method)
 
-Run **ONE command** in your project terminal:
+### 🔹 Method 1: Instant Online 1-Liner (No Cloning Required)
 
-### 🪟 Windows (PowerShell)
+Just open your project terminal and run:
+
+#### 🪟 Windows (PowerShell):
 `powershell
 irm https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-stealth.ps1 | iex
 `
 
-### 🍎 macOS / 🐧 Linux / Git Bash
+#### 🍎 macOS / 🐧 Linux / Git Bash:
 `ash
 curl -fsSL https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-stealth.sh | bash
 `
 
 ---
 
-## 🖥️ What Happens When You Run It? (Interactive CLI)
+### 🔹 Method 2: Local Setup (Clone & Run Offline)
 
-The script automatically prompts you in your terminal to select your IDE and desired skill profile:
+If you prefer to keep the scripts on your machine and run them locally:
+
+#### Step 1: Clone the Repository
+`ash
+git clone https://github.com/devSubhamRoy/graphify-ecc.git
+`
+
+#### Step 2: Run in Any Project Folder
+
+**On Windows (PowerShell):**
+`powershell
+# Run from your project directory (point to cloned scripts folder)
+powershell -ExecutionPolicy Bypass -File C:\path\to\graphify-ecc\scripts\ai-stealth.ps1
+`
+
+**On macOS / Linux (Bash):**
+`ash
+# Run from your project directory
+bash /path/to/graphify-ecc/scripts/ai-stealth.sh
+`
+
+---
+
+### 🔹 Method 3: Direct Project Copy
+
+You can also copy the scripts/ folder directly into your project root:
+`	ext
+your-project/
+├── scripts/
+│   ├── ai-stealth.ps1
+│   ├── ai-clean.ps1
+│   ├── ai-stealth.sh
+│   └── ai-clean.sh
+`
+Then run locally:
+* **Windows:** .\scripts\ai-stealth.ps1
+* **Linux/Mac:** ./scripts/ai-stealth.sh
+
+---
+
+## 🖥️ Interactive Setup Preview
+
+When the script runs, it interactively asks you to select your IDE and profile:
 
 `	ext
 ==========================================================
@@ -91,48 +125,52 @@ Select ECC Profile to install:
 
 ---
 
-## 🎯 Supported IDEs & Skill Modules
+## 💻 Supported IDEs & Features
 
-| IDE / Harness | Target Identifier | Features Included |
+| IDE / AI Tool | Adapter Target | Installed Assets |
 | :--- | :---: | :--- |
 | 🪐 **Google Antigravity** | ntigravity | Native .agents/skills (124+ skills), rules, workflows & subagents |
-| 🟣 **Claude Code** | claude | Marketplace plugin, prompts, rules & memory harness |
+| 🟣 **Claude Code** | claude | Marketplace plugin, prompts, rules & unified memory |
 | ⚡ **Cursor IDE** | cursor | .cursor/agents, rules & workflow definitions |
 | 🟢 **Codex** | codex | Native Codex plugin & role definitions |
-| 🪟 **OpenCode / Zed / Gemini / Kimi** | opencode / zed | Project-local adapters and workflows |
+| 🪟 **OpenCode / Zed / Gemini / Kimi** | opencode / zed | Project-local adapters & workflow commands |
 
 ---
 
-## 🧹 1-Click Clean / Self-Destruct
+## 🧹 Cleanup / Self-Destruct
 
-Whenever you are done with development and want to wipe all local AI files, graphs, and skill folders before handing over or pushing:
+Wipe all generated AI files, graphs, and skill folders before Git commits or project handover:
 
-### 🪟 Windows (PowerShell)
-`powershell
-irm https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-clean.ps1 | iex
-`
+### 🌐 Online 1-Liner Cleanup:
+* **Windows (PowerShell):**
+  `powershell
+  irm https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-clean.ps1 | iex
+  `
+* **macOS / Linux / Git Bash:**
+  `ash
+  curl -fsSL https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-clean.sh | bash
+  `
 
-### 🍎 macOS / 🐧 Linux / Git Bash
-`ash
-curl -fsSL https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-clean.sh | bash
-`
+### 💻 Local Cleanup:
+* **Windows:** .\scripts\ai-clean.ps1
+* **Linux / macOS:** ./scripts/ai-clean.sh
 
 ---
 
-## 🔒 Why Stealth Mode? (.git/info/exclude vs .gitignore)
+## 🔒 Why Stealth Mode?
 
-| Feature | Standard .gitignore | 🥷 Our Stealth Mode (.git/info/exclude) |
+| Feature | Standard .gitignore | 🥷 Stealth Mode (.git/info/exclude) |
 | :--- | :---: | :---: |
 | **Hides files locally** | ✅ Yes | ✅ Yes |
-| **Creates Git file diffs** | ❌ **YES** (Modifies .gitignore in repo) | ✅ **ZERO diffs** (File remains untouched) |
-| **Visible to Clients / Teammates** | ❌ **YES** (Visible in Git commit history) | ✅ **100% INVISIBLE** (Never pushed to remote) |
-| **Works with git add .** | ✅ Yes | ✅ Yes (Completely skipped by Git) |
+| **Creates Git file diffs** | ❌ **YES** (Modifies .gitignore) | ✅ **ZERO diffs** (Repo remains pristine) |
+| **Visible to Clients / Teammates** | ❌ **YES** (Committed in repo history) | ✅ **100% INVISIBLE** (Never pushed) |
+| **Works with git add .** | ✅ Yes | ✅ Yes (Completely ignored by Git) |
 
 ---
 
-## 🚀 Pro-Tip: Add Permanent Aliases (Optional)
+## 🚀 Pro-Tip: Permanent Terminal Aliases
 
-Add these two functions to your PowerShell Profile (
+Add these functions to your PowerShell Profile (
 otepad C:\Users\Subham\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1):
 
 `powershell
@@ -145,9 +183,9 @@ function clean-ai {
 }
 `
 
-Now, in **any codebase**, you can simply type:
-* init-ai ➔ Automatically prompts IDE selection & loads full AI suite.
-* clean-ai ➔ Wipes all AI artifacts instantly.
+Now in **any project**, just type:
+* init-ai ➔ Setup stealth knowledge graph & skills.
+* clean-ai ➔ Wipe all AI traces.
 
 ---
 
