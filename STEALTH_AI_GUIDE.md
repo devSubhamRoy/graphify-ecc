@@ -1,186 +1,73 @@
-# 🛡️ Universal Stealth AI Harness (Graphify + ECC) Guide
+# 🥷 Universal Stealth AI Architecture (Graphify + ECC)
 
-Yeh guide aapko kisi bhi system (apna PC, friend ka laptop, ya client ka production environment) par **Graphify** aur **ECC** ko zero-trace, stealth mode me run karne aur single command se complete wipe out karne ka complete system deti hai.
+> **Zero Git Footprint. Full AI Capabilities. Any IDE.**
 
----
-
-## 🔒 Security & Stealth Philosophy (Kyu safe hai?)
-
-1. **Zero Git Trace**: System-level Git excludes (`.git/info/exclude`) use karta hai. Isse project ka original `.gitignore` modify nahi hota aur GitHub par `git add .` ya `git push` karne par bhi koi AI file ya graph kabhi push nahi hoga.
-2. **Zero-Cost / Offline Ready (`--code-only`)**: Kisi bhi system par bina kisi LLM API key ke local AST se knowledge graph build karta hai.
-3. **Auto-Updatable**: Hamesha latest packages pull karega taaki new features instantly available rahein.
-4. **One-Click Self-Destruct**: Kaam khatam hote hi ek command se sabhi AI footprints wipe ho jayenge.
+This workflow enables complete **Graphify Knowledge Graph** and **Everything Claude Code (ECC)** skills, workflows, and agents inside any project codebase while guaranteeing **0% risk of pushing AI configs or skills to GitHub, GitLab, or remote Git repositories**.
 
 ---
 
-## 🔄 Lifecycle Workflow & Visual Flow
+## 🔒 How Stealth Mode Works (Under the Hood)
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor User as 👤 Developer
-    participant Git as 📁 Local Git (.git/info/exclude)
-    participant Graphify as 🧠 Graphify Engine
-    participant ECC as ⚡ ECC Harness
-    participant Remote as 🌐 GitHub Remote
+Standard `.gitignore` files are committed and pushed to remote repositories, which exposes that AI tools are configured. 
 
-    User->>Git: Run ai-stealth (Injects stealth ignore rules)
-    Note over Git: .git/info/exclude modified (Invisible to git status)
-    User->>Graphify: Local AST Parsing (--code-only)
-    Graphify-->>User: Generates graphify-out/ knowledge graph
-    User->>ECC: Initialize ECC Agent Rules & Harness
-    ECC-->>User: Ready for AI Pair Programming
-    
-    rect rgb(20, 30, 40)
-        Note over User,Graphify: Active Development Phase<br/>AI reads graph context<br/>Run 'graphify update .' for incremental sync
-    end
-
-    User->>User: Run ai-clean (Self-Destruct)
-    Note over User: Deletes graphify-out, .ecc, configs
-    User->>Remote: git push origin main
-    Note over Remote: Clean repository pushed with ZERO AI traces!
-```
+Instead, this system uses **`.git/info/exclude`** (Local Git Private Exclude):
+1. **100% Local**: `.git/info/exclude` lives only on your local machine and is **never** committed or pushed.
+2. **Invisible in Commits**: `git status`, `git add .`, and `git push` completely ignore `.agents/`, `graphify-out/`, `.ecc/`, `.cursor/`, `.claude/`, etc.
+3. **Full IDE Access**: Your local AI agent (Antigravity, Cursor, Claude Code, etc.) reads all `.agents/skills/` natively with zero restrictions.
 
 ---
 
-## 📁 1. The Automation Scripts
+## 🚀 One-Line Execution
 
-### Script 1: `scripts/ai-stealth.ps1` (Windows Setup)
-```powershell
-# ==========================================
-# Universal Stealth AI Setup (Graphify + ECC)
-# ==========================================
+To activate in any new or existing repository:
 
-Write-Host ""
-Write-Host "[1/4] Enforcing Local Stealth Git-Ignore..." -ForegroundColor Cyan
-
-# 1. Local Git private ignore (.git/info/exclude) update (Never committed to GitHub)
-if (Test-Path ".git") {
-    $excludePath = ".git/info/exclude"
-    $ignoreEntries = @(
-        "graphify-out/",
-        ".graphify/",
-        ".ecc/",
-        "ecc.config.*",
-        "*.agent-log",
-        "ai-stealth.ps1",
-        "ai-clean.ps1",
-        "ai-stealth.sh",
-        "ai-clean.sh",
-        "STEALTH_AI_GUIDE.md"
-    )
-    
-    if (-not (Test-Path ".git/info")) {
-        New-Item -ItemType Directory -Path ".git/info" -Force | Out-Null
-    }
-    
-    $existing = if (Test-Path $excludePath) { Get-Content $excludePath } else { @() }
-    foreach ($entry in $ignoreEntries) {
-        if ($existing -notcontains $entry) {
-            Add-Content -Path $excludePath -Value $entry
-        }
-    }
-    # Untrack if previously committed/staged
-    git rm -r --cached graphify-out/ 2>$null | Out-Null
-    Write-Host "   [OK] Local Git stealth ignore active (Zero trace in repo commits)" -ForegroundColor Green
-} else {
-    Write-Host "   [INFO] No .git folder found. Skipping git-exclude." -ForegroundColor Yellow
-}
-
-# 2. Update and Run Graphify (Zero-cost local AST mode)
-Write-Host ""
-Write-Host "[2/4] Updating & Running Graphify (Knowledge Graph)..." -ForegroundColor Cyan
-try {
-    pip install --upgrade graphifyy --quiet 2>$null
-    graphify . --code-only
-    Write-Host "   [OK] Graphify knowledge graph generated in graphify-out/" -ForegroundColor Green
-} catch {
-    Write-Host "   [WARN] Graphify run failed or Python/pip not present." -ForegroundColor Yellow
-}
-
-# 3. Setup ECC Agent Harness
-Write-Host ""
-Write-Host "[3/4] Initializing Latest ECC Harness..." -ForegroundColor Cyan
-try {
-    npx -y ecc-universal@latest setup --yes 2>$null
-    Write-Host "   [OK] ECC Agent Harness configured successfully." -ForegroundColor Green
-} catch {
-    Write-Host "   [WARN] ECC setup encountered an error." -ForegroundColor Yellow
-}
-
-Write-Host ""
-Write-Host "==================================================" -ForegroundColor Green
-Write-Host "AI Stealth Mode Active! Ready for development." -ForegroundColor Green
-Write-Host "To wipe all traces later, run: .\scripts\ai-clean.ps1" -ForegroundColor Gray
-Write-Host "==================================================" -ForegroundColor Green
-Write-Host ""
-```
-
----
-
-### Script 2: `scripts/ai-clean.ps1` (Windows Self-Destruct)
-```powershell
-# ==========================================
-# AI Stealth Self-Destruct / Clean Script
-# ==========================================
-
-Write-Host ""
-Write-Host "Wiping all AI footprints from current project..." -ForegroundColor Yellow
-
-$targets = @(
-    "graphify-out",
-    ".graphify",
-    ".ecc",
-    "ecc.config.js",
-    "ecc.config.json"
-)
-
-foreach ($target in $targets) {
-    if (Test-Path $target) {
-        Remove-Item -Recurse -Force -Path $target -ErrorAction SilentlyContinue
-        Write-Host "   [DELETED] $target" -ForegroundColor Red
-    }
-}
-
-# Clean temp logs if any
-Get-ChildItem -Path . -Filter "*.agent-log" -Recurse -ErrorAction SilentlyContinue | Remove-Item -Force
-
-Write-Host ""
-Write-Host "Project is completely clean! Zero AI traces remaining." -ForegroundColor Green
-Write-Host ""
-```
-
----
-
-## 🌐 2. Multi-System Portability (Kisi bhi Computer par chalane ke liye)
-
-### Start Karte Waqt (Setup & Run):
-PowerShell me direct yeh run karein:
+### Windows (PowerShell):
 ```powershell
 irm https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-stealth.ps1 | iex
 ```
+*(Or run locally: `.\scripts\ai-stealth.ps1`)*
 
-### Kaam Khatam Hone Par (Wipe & Clean):
-```powershell
-irm https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-clean.ps1 | iex
+### macOS / Linux / Git Bash:
+```bash
+curl -fsSL https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-stealth.sh | bash
+```
+*(Or run locally: `./scripts/ai-stealth.sh`)*
+
+---
+
+## 🎛️ Interactive Selection Menu
+
+When the script runs, it interactively prompts you:
+
+```text
+Select your IDE / AI Agent:
+  [1] Google Antigravity (Default)
+  [2] Claude Code
+  [3] Cursor IDE
+  [4] Codex
+  [5] OpenCode
+  [6] Gemini CLI
+  [7] Zed
+  [8] Kimi Code
+
+Select ECC Profile to install:
+  [1] Developer Profile (Recommended: TDD, Code Review, Testing, Git - 9 modules)
+  [2] Full Profile (All 26 modules: DevOps, Docker, K8s, ML, 290+ skills)
+  [3] Minimal Profile (Low-context core workflows)
 ```
 
 ---
 
-## 💻 3. Apne Personal PC Par Permanent Shortcut
+## 🧹 Complete AI Wipe (Zero Traces)
 
-Apne PC par PowerShell me shortcut banane ke liye:
-1. Terminal me run karein: `notepad $PROFILE`
-2. Niche diye functions paste karke save kar lein:
+Whenever you want to delete all generated AI files, graphs, and skill configurations:
 
+### Windows (PowerShell):
 ```powershell
-function init-ai {
-    irm https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-stealth.ps1 | iex
-}
-
-function clean-ai {
-    irm https://raw.githubusercontent.com/devSubhamRoy/graphify-ecc/main/scripts/ai-clean.ps1 | iex
-}
+.\scripts\ai-clean.ps1
 ```
 
-Ab aap apne PC ke kisi bhi project me sirf **`init-ai`** aur **`clean-ai`** type karke direct chala sakte hain!
+### macOS / Linux:
+```bash
+./scripts/ai-clean.sh
+```

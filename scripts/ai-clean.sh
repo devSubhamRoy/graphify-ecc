@@ -1,29 +1,43 @@
 #!/usr/bin/env bash
-# ==========================================
-# AI Stealth Self-Destruct / Clean Script
-# ==========================================
+# ==========================================================
+# Universal AI Clean / Wipe Script (Stealth Cleanup)
+# ==========================================================
 
 echo ""
-echo "Wiping all AI footprints from current project..."
+echo "=========================================================="
+echo "             AI STEALTH ARTIFACTS CLEANUP                 "
+echo "=========================================================="
+echo ""
 
-targets=(
-    "graphify-out"
-    ".graphify"
-    ".ecc"
-    "ecc.config.js"
-    "ecc.config.json"
+PATHS_TO_CLEAN=(
+  "graphify-out"
+  ".graphify"
+  ".agents"
+  ".agent"
+  ".ecc"
+  ".claude"
+  ".cursor"
+  ".gemini"
+  ".codex"
+  ".kimi-code"
+  ".zed"
+  "STEALTH_AI_GUIDE.md"
 )
 
-for target in "${targets[@]}"; do
-    if [ -e "$target" ]; then
-        rm -rf "$target"
-        echo "   [DELETED] $target"
-    fi
+for p in "${PATHS_TO_CLEAN[@]}"; do
+  if [ -e "$p" ]; then
+    echo "Removing: $p"
+    rm -rf "$p"
+  fi
 done
 
-# Clean temp logs if any
 find . -name "*.agent-log" -type f -delete 2>/dev/null || true
 
+if [ -f ".git/info/exclude" ]; then
+  sed -i '/graphify\|\.agents\|\.ecc\|\.claude\|\.cursor\|\.gemini\|\.codex\|\.kimi\|\.zed\|ai-stealth\|ai-clean/d' .git/info/exclude 2>/dev/null || true
+fi
+
 echo ""
-echo "Project is completely clean! Zero AI traces remaining."
+echo "   [OK] AI stealth directories and artifacts removed."
+echo "   [OK] Workspace is clean with zero AI trace."
 echo ""
